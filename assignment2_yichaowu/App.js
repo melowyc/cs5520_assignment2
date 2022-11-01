@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Entypo } from '@expo/vector-icons';
 
+import MyButton from './components/MyButton';
 import AllExpense from './screens/AllExpense';
 import ImportantExpense from './screens/ImportantExpense';
 import AddExpense from './screens/AddExpense';
@@ -25,11 +26,7 @@ function Home({navigation}) {
                     tabBarActiveTintColor: 'white',
                     headerTitleAlign: 'center',
                     headerRight: () => {
-                        return <Button
-                            onPress={() => navigation.navigate('AddExpense')}
-                            title="+"
-                            color="white"
-                        />
+                        return <MyButton onPress={() => navigation.navigate('AddExpense')} >+</MyButton>
                     }
                 }
             }}

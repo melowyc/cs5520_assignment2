@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: "black",
         marginBottom: 4,
-        textAlign: "flex-start",
-        alignItems:"flex-start",
+        textAlign:"left",
+        // alignItems:"left",
     },
     input: {
         borderWidth: 1,

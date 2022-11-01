@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 
 import Colors from '../constants/Colors';
 
-export default function GenericButton({ children, onPress, mode, style }) {
+export default function MyButton({ children, onPress, mode, style }) {
     return (
         <View style={style}>
             <Pressable onPress={onPress} style={({ pressed }) => pressed && styles.pressed}>
