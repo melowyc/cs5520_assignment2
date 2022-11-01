@@ -1,39 +1,30 @@
-import { StyleSheet, Text, View, Alert } from 'react-native';
-import { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-
+import { StyleSheet, View, Alert } from 'react-native';
 import { deleteFromDB, editImportantTrueFromDB, editImportantFalseFromDB } from '../firebase/firestore';
-import { firestore } from '../firebase/firebase-setup';
-import { collection, onSnapshot, getDocs } from 'firebase/firestore';
-
-/* Components */
 
 import MyButton from '../components/MyButton';
 import Column from '../components/Column';
-
+import Colors from '../constants/Colors';
 
 export default function EditExpense({ navigation, route }) {
     const expense = route.params.expenseObject;
 
-
-    /* Methods */
     function alert_MarkImportant() {
         if (expense.important) {
-            Alert.alert("This is already marked Important", "Do you want to mark this as unimportant?", [
+            Alert.alert("This is already marked Important", "Do you want to remove this from important expenses?", [
                 { text: "No", style: "cancel", onPress: f_nothingHappen },
                 { text: "Yes", style: "default", onPress: f_MarkUnImportant }
             ]);
         }
         else{
             Alert.alert("Important", "Are you sure you want to mark this as important?", [
-            { text: "No", style: "destructive", onPress: f_nothingHappen },
+                { text: "No", style: "default", onPress: f_nothingHappen },
             { text: "Yes", style: "default", onPress: f_MarkImportant }
             ]);
         }
     }
 
     function alert_Delete() {
-        Alert.alert("Delete", "Are you sure you want to mark this as important?", [
+        Alert.alert("Delete", "Are you sure you want to delete this item?", [
             { text: "No", style: "cancel", onPress: f_nothingHappen },
             { text: "Yes", style:'default', onPress: f_Delete }
         ]);
@@ -63,7 +54,7 @@ export default function EditExpense({ navigation, route }) {
     }
 
     return (
-        <View style={styles.form}>
+        <View style={styles.container}>
             <Column style={styles.buttonsContainer}>
                 <MyButton style={styles.buttons} onPress={alert_MarkImportant}>Mark as improtant</MyButton>
                 <MyButton style={styles.buttons} onPress={alert_Delete}>Delete</MyButton>
@@ -74,29 +65,20 @@ export default function EditExpense({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-    row: {
-        justifyContent: 'space-evenly',
-    },
-    form: {
-        marginTop: 70,
-    },
-    title: {
-        textAlign: 'center',
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 24,
-        marginVertical: 12,
+
+    container: {
+        flex: 1,
+        backgroundColor: Colors.lightpurple,
+        alignItems: 'center',
     },
     buttonsContainer: {
         justifyContent: 'center',
-        marginTop: 10,
+        marginTop: 40,
+        marginVertical: 4,
     },
     buttons: {
-        marginHorizontal: 8,
-        minWidth: 100,
+        marginHorizontal: 30,
+        minWidth: 200,
+        marginVertical: 8,
     },
-    invalidInput: {
-        color: 'tomato',
-        marginLeft: 6
-    }
 });

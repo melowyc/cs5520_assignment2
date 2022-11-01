@@ -3,44 +3,53 @@ import { StyleSheet, Text, TextInput, Button, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import { Entypo } from '@expo/vector-icons';
 
 import AllExpense from './screens/AllExpense';
 import ImportantExpense from './screens/ImportantExpense';
 import AddExpense from './screens/AddExpense';
 import EditExpense from './screens/EditExpense';
-
+import Colors from './constants/Colors';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-
-
 function Home({navigation}) {
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="All" component={AllExpense}
-                options={{
-                    headerTitle: "All Expenses",
-                    headerRight: () => (
-                        <Button
+        <Tab.Navigator
+            screenOptions={({ navigation, route }) => {
+
+                /*
+                || in this approach where we have a function which returns an object for screenOptions,
+                || we also have access to the navigation and route prop and do navigation methods like navigate
+                */
+
+                return {
+                    headerStyle: { backgroundColor: Colors.purple },
+                    headerTintColor: 'white',
+                    tabBarStyle: { backgroundColor: Colors.purple },
+                    tabBarActiveTintColor: 'white',
+                    headerTitleAlign: 'center',
+                    headerRight: () => {
+                        return <Button
                             onPress={() => navigation.navigate('AddExpense')}
                             title="+"
-                            color="black"
+                            color="white"
                         />
-                    ),
+                    }
+                }
+            }}
+        >
+            <Tab.Screen name="All Expenses" component={AllExpense}
+                options={{
+                    tabBarIcon: ({ color, size }) => <Entypo name="list" size={size} color={color} />,
+                    headerTitle: "All Expenses",
                 }}
             />
-            <Tab.Screen name="Important" component={ImportantExpense}
+            <Tab.Screen name="Important Expenses" component={ImportantExpense}
                 options={{
+                    tabBarIcon: ({ color, size }) => <Entypo name="new" size={size} color={color} />,
                     headerTitle: "Important Expenses",
-                    headerRight: () => (
-                        <Button
-                            onPress={() => navigation.navigate('EditExpense')}
-                            title="+"
-                            color="black"
-                        />
-                    ),
                 }}
             />
         </Tab.Navigator>
@@ -57,8 +66,24 @@ export default function App() {
                     component={Home}
                     options={{ headerShown: false }}
                 />
-                <Stack.Screen name="AddExpense" component={AddExpense} />
-                <Stack.Screen name="EditExpense" component={EditExpense} />
+                <Stack.Screen name="AddExpense" component={AddExpense} 
+                    options={{
+                        headerStyle: { backgroundColor: Colors.purple },
+                        headerTintColor: 'white',
+                        tabBarStyle: { backgroundColor: Colors.purple },
+                        tabBarActiveTintColor: 'white',
+                        headerTitleAlign: 'center',
+                    }}
+                />
+                <Stack.Screen name="EditExpense" component={EditExpense} 
+                    options={{
+                        headerStyle: { backgroundColor: Colors.purple },
+                        headerTintColor: 'white',
+                        tabBarStyle: { backgroundColor: Colors.purple },
+                        tabBarActiveTintColor: 'white',
+                        headerTitleAlign: 'center',
+                    }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );

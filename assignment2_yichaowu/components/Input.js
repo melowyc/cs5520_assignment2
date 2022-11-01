@@ -17,8 +17,6 @@ const styles = StyleSheet.create({
     container: {
         marginHorizontal: 20,
         marginVertical: 10,
-        // backgroundColor: 'white',
-        flex: 1,
     },
     label: {
         fontSize: 14,
@@ -31,16 +29,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black',
         borderRadius: 4,
-        backgroundColor: Colors.primary100,
+        backgroundColor: Colors.inputpurple,
         padding: 6,
         fontSize: 18,
-        color: Colors.primary700,
+        color: Colors.lightpurple,
     },
-    multiline: {
-        minHeight: 100,
-        textAlignVertical: 'top',
-    },
-    invalidLabel: {
-        color: 'tomato'
-    }
 });

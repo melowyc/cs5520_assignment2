@@ -1,53 +1,19 @@
 import { StyleSheet, Text, View, Alert } from 'react-native';
-import { useState, useEffect } from "react";
-import { useNavigation } from '@react-navigation/native';
-import { writeToDB, deleteFromDB } from '../firebase/firestore';
-import { firestore } from '../firebase/firebase-setup';
-import { collection, onSnapshot } from 'firebase/firestore';
-
-/* Components */
+import { useState } from "react";
+import { writeToDB } from '../firebase/firestore';
 
 import MyButton from '../components/MyButton';
 import Row from '../components/Row';
 import Input from '../components/Input';
 import Column from '../components/Column';
+import Colors from '../constants/Colors';
 
 
 export default function AddExpense({ navigation }) {
-    /* Hooks and variables */
     const [text, setText] = useState('');
     const [amount, setAmount] = useState(0);
 
-    // useEffect(() => {
-    //     const unsubscribe = onSnapshot(
-    //         collection(firestore, "expenses"),
-    //         (querySnapshot) => {
-    //             if (querySnapshot.empty) {
-    //                 setExpenses([]);
-    //                 return;
-    //             }
-    //             setExpenses(
-    //                 querySnapshot.docs.map((snapDoc) => {
-    //                     let data = snapDoc.data();
-    //                     data = { ...data, key: snapDoc.id };
-    //                     return data;
-    //                 })
-    //             );
-    //         }
-    //     );
-    //     return () => {
-    //         unsubscribe();
-    //     };
-    // }, []);
-
     async function f_Submit() {
-        // const expenseData = {
-        //     id: Math.floor(Math.random() * 100000000),
-        //     amount: parseFloat(amount),
-        //     // date: moment(inputs.date.value).format('YYYY-MM-DD'),
-        //     description: text,
-        //     important: false
-        // }
 
         const amountIsValid = (!isNaN(amount) && amount > 0);
         const descriptionIsValid = text.length > 0;
@@ -68,7 +34,6 @@ export default function AddExpense({ navigation }) {
             ]);
             return;
         }
-
     }
 
     function f_reset() {
@@ -77,15 +42,13 @@ export default function AddExpense({ navigation }) {
     }
 
     return (
-        <View style={styles.form}>
+        <View style={styles.container}>
             <Text style={styles.title}>Your Expense</Text>
-            <Column style={styles.column}>
+            <Column>
                 <Input label="Amount" value={amount} f_onChange={setAmount} />
                 <Input label="Description" value={text} f_onChange={setText} />
             </Column>
             
-
-
             <Row style={styles.buttonsContainer}>
                     <MyButton style={styles.buttons} onPress={() => navigation.goBack()}>Cancel</MyButton>
                     <MyButton style={styles.buttons} onPress={f_Submit}>Submit</MyButton>
@@ -96,12 +59,11 @@ export default function AddExpense({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    column: {
+
+    container: {
         flex: 1,
-        minHeight: '20%'
-    },
-    form: {
-        marginTop: 40,
+        backgroundColor: Colors.lightpurple,
+        paddingTop: 30,
     },
     title: {
         textAlign: 'center',
@@ -112,14 +74,10 @@ const styles = StyleSheet.create({
     },
     buttonsContainer: {
         justifyContent: 'center',
-        marginTop: 100,
+        marginTop: 80,
     },
     buttons: {
         marginHorizontal: 8,
         minWidth: 100,
     },
-    invalidInput: {
-        color: 'tomato',
-        marginLeft: 6
-    }
 });

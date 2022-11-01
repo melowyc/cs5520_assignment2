@@ -1,6 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 
-/* Components */
 import ExpenseItem from './ExpenseItem';
 
 export default function ExpensesList({ expenses }) {
@@ -8,14 +7,9 @@ export default function ExpensesList({ expenses }) {
         <View style={styles.container}>
             <FlatList
                 data={expenses}
-                keyExtractor={(item, index) => item.id}
-                // contentContainerStyle={{ paddingBottom: 100 }}
-                renderItem={(expenseData) => {
-
-                    const expense = expenseData.item;
-
+                renderItem={({item}) => {
                     return (
-                        <ExpenseItem expense={expense} />
+                        <ExpenseItem expense={item} />
                     );
                 }}
             />

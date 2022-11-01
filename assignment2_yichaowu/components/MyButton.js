@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     button: {
         borderRadius: 4,
         padding: 8,
-        backgroundColor: Colors.primary500,
+        backgroundColor: Colors.purple,
         minWidth: 80,
     },
     flat: {
@@ -29,13 +29,13 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     flatText: {
-        color: Colors.primary200,
+        color: 'white',
 
     },
     pressed: {
         opacity: 0.75,
         borderRadius: 4,
-        backgroundColor: Colors.primary100,
+        backgroundColor: Colors.pressedpurple,
     }
 
 });

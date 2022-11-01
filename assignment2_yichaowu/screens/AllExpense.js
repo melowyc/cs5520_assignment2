@@ -1,18 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, Button, View } from 'react-native';
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { getExpenses } from '../firebase/firestore';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet} from 'react-native';
 import { firestore } from '../firebase/firebase-setup';
-import { collection, onSnapshot, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 
 import Column from '../components/Column';
 import ExpenseList from '../components/ExpenseList';
-
-
-
+import Colors from '../constants/Colors';
 
 export default function AllExpense({ navigation }) {
     const [expenses, setExpenses] = useState([]);
@@ -49,7 +42,7 @@ export default function AllExpense({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'lightpurple',
+        backgroundColor: Colors.lightpurple,
         alignItems: 'center',
     },
 });

@@ -1,8 +1,6 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 
-
-/* Components */
 import Row from './Row';
 import Colors from '../constants/Colors';
 
@@ -39,26 +37,25 @@ const styles = StyleSheet.create({
     },
     expenseItem: {
         padding: 10,
-        backgroundColor: Colors.primary500,
+        backgroundColor: Colors.purple,
         marginVertical: 4,
         borderRadius: 6,
         elevation: 3,
-        shadowColor: Colors.gray500,
+        shadowColor: Colors.shadow,
         shadowRadius: 4,
         shadowOffset: { width: 1, height: 1 },
         shadowOpacity: 0.4
 
     },
     textBase: {
-        color: Colors.primary50
+        color: 'white'
     },
     amount: {
-        color: Colors.primary500,
+        color: Colors.purple,
         fontWeight: 'bold',
     },
     amountContainer: {
         paddingHorizontal: 12,
-        // paddingVertical: 4,
         borderRadius: 4,
         backgroundColor: 'white',
         justifyContent: 'center',
