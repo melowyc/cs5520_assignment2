@@ -18,12 +18,6 @@ function Home({navigation}) {
     return (
         <Tab.Navigator
             screenOptions={({ navigation, route }) => {
-
-                /*
-                || in this approach where we have a function which returns an object for screenOptions,
-                || we also have access to the navigation and route prop and do navigation methods like navigate
-                */
-
                 return {
                     headerStyle: { backgroundColor: Colors.purple },
                     headerTintColor: 'white',
