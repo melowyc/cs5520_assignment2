@@ -12,15 +12,6 @@ const firebaseConfig = {
     messagingSenderId: messagingSenderId,
     appId: appId,
     measurementId: measurementId,
-
-    // apiKey: "AIzaSyB0iD0wNUTA6czGahbEBcYh40hn7bNQJtw",
-    // authDomain: "cs5520ass2.firebaseapp.com",
-    // databaseURL: "https://cs5520ass2-default-rtdb.firebaseio.com",
-    // projectId: "cs5520ass2",
-    // storageBucket: "cs5520ass2.appspot.com",
-    // messagingSenderId: "151513782032",
-    // appId: "1:151513782032:web:cdbb26bf37b387d3297795",
-    // measurementId: "G-RMWFPSQMHM"
 };
 
 let myApp = initializeApp(firebaseConfig);
